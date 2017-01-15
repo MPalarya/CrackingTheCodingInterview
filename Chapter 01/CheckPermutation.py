@@ -26,10 +26,10 @@ def check_permutation2(s1, s2):
         lst[ord(c1)] += 1
     for c2 in s2:
         lst[ord(c2)] -= 1
-        if lst[ord(c2)] < 0:
-            return False
 
-    return True
+    if set(lst) == set([0]):
+        return True
+    return False
 
 
 class Test(unittest.TestCase):
@@ -38,11 +38,11 @@ class Test(unittest.TestCase):
         ("", "", True),
         (" ", " ", True),
         ("  ", "  ", True),
-        ("  ", " ", False),
-        ("  ", " ", False),
+        ("  ", " ", False),  # 2nd string is shorter
+        (" ", "  ", False),  # 1st string is shorter
         ("qwertyuiop[]", "q]w[eprotiyu", True),
         ("abc", "abcd", False),
-        ("abc", "abd", False),
+        ("abc", "abd", False),  # same length
         ("hey you", "heyyo u", True),
     ]
 
