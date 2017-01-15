@@ -26,10 +26,10 @@ def check_permutation2(s1, s2):
         lst[ord(c1)] += 1
     for c2 in s2:
         lst[ord(c2)] -= 1
+        if lst[ord(c2)] < 0:
+            return False
 
-    if set(lst) == set([0]):
-        return True
-    return False
+    return True
 
 
 class Test(unittest.TestCase):
